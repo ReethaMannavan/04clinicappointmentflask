@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>📋 Appointments</h3>
+  <a href="/logout" class="btn btn-light btn-sm text-dark">Logout</a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover bg-light text-dark align-middle">
+    <thead class="table-dark text-center">
+      <tr>
+        <th>ID</th>
+        <th>Patient</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in appointments %}
+      <tr class="text-center">
+        <td>{{ a[0] }}</td>
+        <td>{{ a[1] }}</td>
+        <td>{{ a[2] }}</td>
+        <td>{{ a[3] }}</td>
+        <td>{{ a[4] }}</td>
+        <td>{{ a[5] }}</td>
+        <td>{{ a[6] }}</td>
+        <td>
+          {% if a[7] == "Pending" %}
+            <span class="badge bg-warning text-dark">Pending</span>
+          {% elif a[7] == "Confirmed" %}
+            <span class="badge bg-success">Confirmed</span>
+          {% elif a[7] == "Cancelled" %}
+            <span class="badge bg-danger">Cancelled</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if a[7] == "Pending" %}
+            <a href="/update_status/{{ a[0] }}/Confirmed" class="btn btn-success btn-sm me-1">Confirm</a>
+            <a href="/update_status/{{ a[0] }}/Cancelled" class="btn btn-danger btn-sm">Cancel</a>
+          {% else %}
+            <button class="btn btn-outline-secondary btn-sm" disabled>Done</button>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

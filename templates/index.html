@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto p-4" style="max-width:600px;">
+  <div class="card-header text-center fs-4">Book Appointment</div>
+  <form method="POST" action="/book" class="card-body">
+    <input type="text" name="name" class="form-control mb-3" placeholder="Full Name" required>
+    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+    <input type="text" name="phone" class="form-control mb-3" placeholder="Phone Number" required>
+    <select name="doctor" class="form-select mb-3" required>
+      <option value="">-- Select Doctor --</option>
+      <option>Dr. Ravi</option>
+      <option>Dr. Priya</option>
+      <option>Dr. Karthik</option>
+    </select>
+    <input type="date" name="date" class="form-control mb-3" required>
+    <input type="time" name="time" class="form-control mb-3" required>
+    <button type="submit" class="btn btn-custom w-100">Book Appointment</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto p-4" style="max-width:400px;">
+  <div class="card-header text-center fs-5">Doctor Login</div>
+  <form method="POST" class="card-body">
+    <input type="text" name="username" class="form-control mb-3" placeholder="Username" required>
+    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+    <button type="submit" class="btn btn-custom w-100">Login</button>
+  </form>
+</div>
+{% endblock %}
